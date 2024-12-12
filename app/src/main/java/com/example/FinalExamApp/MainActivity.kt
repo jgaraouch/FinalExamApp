@@ -5,7 +5,9 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,11 +29,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(/* view = */ findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        Log.d("MainActivity", "Application démarrée")
+
         Toast.makeText(this, "Bienvenue sur FinalExamApp!", Toast.LENGTH_LONG).show()
         val rootView = findViewById<View>(android.R.id.content)
         Snackbar.make(rootView, R.string.welcome_message, Snackbar.LENGTH_SHORT).show()
@@ -63,7 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         userDao.getAll().observe(this, Observer { users ->
             users.forEach { user ->
-                println("User: ${user.name}")
+                Log.d("ListDebug", "Item: ${user.name}")
+
             }
         })
         val sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
@@ -76,7 +81,11 @@ class MainActivity : AppCompatActivity() {
 
         val username = sharedPreferences.getString("username", "JihedGaraouch")
         val userId = sharedPreferences.getInt("userId", -1)
-        println("Username: $username, UserId: $userId")
+        val displayTextView = findViewById<TextView>(R.id.displayTextView)
+        if(userId ==null) {
+            Log.e("User","user Id is NUll")
+        }
+        displayTextView.text = "Username: $username, UserId: $userId"
 
     }
 }

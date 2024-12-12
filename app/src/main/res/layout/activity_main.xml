@@ -6,7 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -14,13 +19,21 @@
         android:text="Bonjour, FinalExamApp!"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/displayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="User Information Will Appear Here" />
     <com.example.FinalExamApp.CustomView
         android:layout_width="match_parent"
         android:layout_height="200dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
