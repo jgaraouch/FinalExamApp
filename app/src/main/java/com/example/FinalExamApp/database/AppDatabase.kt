@@ -9,3 +9,4 @@ import com.example.FinalExamApp.entities.User
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 }
+ 
