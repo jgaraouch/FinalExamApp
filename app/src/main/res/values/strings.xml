@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalExamApp</string>
+    <string name="app_name" translatable="false">FinalExamApp</string>
     <string name="welcome_message">Bienvenue sur FinalExamApp!</string>
 
 </resources>
